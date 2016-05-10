@@ -1,0 +1,4 @@
+.bundle
+.idea
+*.sqlite3
+*.log

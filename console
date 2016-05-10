@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+$: << File.expand_path(File.dirname(__FILE__))
+require 'config/environment'
+require 'irb'
+require 'irb/completion'
+
+IRB.start(__FILE__)
