@@ -5,17 +5,17 @@ gem 'rake'
 #gem "rainbows"
 gem 'unicorn'
 gem 'grape'
-gem 'grape-activerecord'
+gem 'otr-activerecord'
 gem 'activerecord', require: 'active_record'
 gem 'sqlite3'
 #gem 'mysql2','~> 0.3.17'
 gem 'rack-contrib'
 gem 'rack-cors'
-gem "activeuuid"
+
 gem "rest-client"
 gem 'guard', require: false
 gem 'guard-rspec', require: false
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 group :development do
   gem 'pry'
 end

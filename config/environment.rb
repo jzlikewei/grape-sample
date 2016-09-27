@@ -24,9 +24,9 @@ Dir.glob(File.join(root_path, 'app', 'api', '*.rb')).each { |file| require file 
 # Dir.glob(File.join(root_path, 'app', 'monkey_patch', '*.rb')).each { |file| require file }
 
 ActiveRecord::Base.logger = logger
-Grape::ActiveRecord.configure_from_file!(File.join(root_path, 'config', 'database.yml'))
-ActiveRecord::Base.connection_pool.with_connection do
-  ActiveUUID::Patches.apply!
-end
+OTR::ActiveRecord.configure_from_file! "config/database.yml"
+# ActiveRecord::Base.connection_pool.with_connection do
+#   ActiveUUID::Patches.apply!
+# end
 
 
