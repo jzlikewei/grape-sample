@@ -16,6 +16,9 @@ gem "rest-client"
 gem 'guard', require: false
 gem 'guard-rspec', require: false
 gem 'bcrypt'
+gem "pg"
+#gem 'qiniu'
+#gem "redis"
 group :development do
   gem 'pry'
 end

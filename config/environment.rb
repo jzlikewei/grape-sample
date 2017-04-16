@@ -17,7 +17,34 @@ case ENV["RACK_ENV"]
   else
     logger = ::Logger.new("/dev/null")
 end
+Grape::API.class_exec do
+  def self.paginate!
+    #puts self
+    params do
+      optional :limit, type:Integer, default:8,values: 1..100
+      optional :count, type:Grape::API::Boolean, default:false
+      optional :page, type:Integer, default:1
+    end
+  end
+end
+module Pagination
+ # extend ActiveSupport::Concern
+       def paginate(params)
+         # pagination code goes here
+         if params[:count]
+           self.count
+         else
+           self.limit(params[:limit]).offset(params[:limit]*(params[:page]-1))
+         end
+       end
+end
+class Hash
+  def permit(*args)
+    self.select { |key,_| args.include? key.to_s or args.include? key.to_sym }
+  end
+end
 
+ActiveRecord::Base.extend(Pagination)
 
 Dir.glob(File.join(root_path, 'app', 'models', '*.rb')).each { |file| require file }
 Dir.glob(File.join(root_path, 'app', 'api', '*.rb')).each { |file| require file }
