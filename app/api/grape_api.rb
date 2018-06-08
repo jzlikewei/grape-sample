@@ -1,11 +1,18 @@
 module API
   class GrapeApi < Grape::API
     format :json
-    get "/ping" do
-      {dong: Time.now.to_i}
+
+    desc "ping"
+    params do
+      requires :test_id, type: String, desc: 'desv', default: 'asdfas', values: ['asdfas']
     end
-    delete "/dong" do
-      {ping:Time.now.to_i}  
+    get '/ping/:room_id' do
+      { dong: Time.now.to_i }
+    end
+
+    desc "ping"
+    delete '/dong' do
+      { ping: Time.now.to_i }
     end
   end
 end

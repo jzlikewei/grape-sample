@@ -2,3 +2,5 @@
 .idea
 *.sqlite3
 *.log
+tmp
+log
